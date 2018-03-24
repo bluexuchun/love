@@ -10,7 +10,7 @@ const sms = new SMS({
   AccessKeySecret: 'vvRbYSPbl64zfFWi6yHryMgEqNqSaW'
 });
 
-Router.get('/getUser',function(req,res){
+Router.post('/getUser',function(req,res){
   User.find({},function(err,doc){
     if(!err){
       return res.json({code:1,msgs:doc})

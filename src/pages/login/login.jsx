@@ -8,6 +8,7 @@ import TextField from 'material-ui/TextField';
 import { createMuiTheme } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
+import axios from 'axios';
 
 class Login extends React.Component {
   constructor(props){
@@ -33,7 +34,7 @@ class Login extends React.Component {
                 placeholder="请输入你的账号"
                 className="login-ac"
                 margin="normal"
-                onChange={v=>this.handleChange('name',v)}
+                onChange={v=>this.handleChange('account',v)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -45,6 +46,7 @@ class Login extends React.Component {
                 type="password"
                 autoComplete="current-password"
                 margin="normal"
+                onChange={v=>this.handleChange('pwd',v)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -52,6 +54,7 @@ class Login extends React.Component {
                 variant="raised"
                 color="primary"
                 className="login-btn"
+                onClick={()=>this.login()}
               >
                 登录
               </Button>
@@ -70,8 +73,18 @@ class Login extends React.Component {
     this.props.history.push('/register')
   }
   handleChange(key,value){
-    console.log(key);
-    console.log(value.target.value)
+    this.setState({
+      [key]:value.target.value
+    })
+  }
+  login(){
+    console.log(this.state);
+    console.log(this.state.account);
+    console.log(this.state.pwd);
+    axios.post('/user/getUser',{})
+      .then(res => {
+        console.log(res);
+      })
   }
 }
 

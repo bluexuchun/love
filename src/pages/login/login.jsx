@@ -9,6 +9,7 @@ import { createMuiTheme } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 import axios from 'axios';
+import Logo from '../../component/logo/logo'
 
 class Login extends React.Component {
   constructor(props){
@@ -21,9 +22,7 @@ class Login extends React.Component {
   render () {
     return (
       <div className="login">
-        <div className="logoimg">
-          <img src={logoImg} ></img>
-        </div>
+        <Logo></Logo>
 
         <div className="login-content">
           <Grid container spacing={16} className="login-form">
